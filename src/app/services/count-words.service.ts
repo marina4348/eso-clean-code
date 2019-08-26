@@ -23,8 +23,6 @@ export class CountWordsService {
     this.wordCount$$.next(wordCount);
   }
 
-
-
   public static filterWords(words: string[], stopWords: string[]): string[] {
     return words.filter(word => !stopWords.includes(word));
   }
