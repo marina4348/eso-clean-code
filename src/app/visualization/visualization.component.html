@@ -1,0 +1,11 @@
+<div class="text-input-label">
+  <label>
+    <input placeholder="Enter file name here"
+           #fileText
+           (change)="onTextInput(fileText.value)">
+    <input placeholder="Enter your text here"
+           #text
+           (change)="onTextInput(text.value)">
+  </label>
+</div>
+<div>{{"Number of words: "}} {{countWordsService.wordCount$|async}}</div>
