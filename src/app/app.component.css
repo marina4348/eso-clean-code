@@ -1,0 +1,17 @@
+.app-container {
+  display: grid;
+  align-items: center;
+  align-content: center;
+}
+
+.title {
+  margin: 50px;
+  font-size: large;
+  position: absolute;
+}
+
+.visualization {
+  margin: 100px;
+  font-size: medium;
+  position: absolute;
+}
