@@ -1,11 +1,12 @@
 <div class="text-input-label">
   <label>
-    <input placeholder="Enter file name here"
-           #fileText
-           (change)="onTextInput(fileText.value)">
-    <input placeholder="Enter your text here"
+    <input placeholder="Enter your text or filename"
            #text
            (change)="onTextInput(text.value)">
   </label>
 </div>
-<div>{{"Number of words: "}} {{countWordsService.wordCount$|async}}</div>
+<div *ngIf="(countWordsService.wordCount$|async) !== undefined">{{"Number of words: "}} {{countWordsService.wordCount$|async}}</div>
+<div *ngIf="(pagingService.pageData$ | async) !== undefined">{{(pagingService.pageData$ | async).header}}</div>
+<div *ngFor="let pageData of (pagingService.pageData$ | async)?.records">
+  {{pageData.line}}
+</div>

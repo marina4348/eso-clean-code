@@ -1,26 +1,30 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ParseDataService} from './parse-data.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ParseInputService {
 
-  public constructor(public readonly parseDataService:ParseDataService) { }
+  public constructor(public readonly parseDataService: ParseDataService) {
+  }
 
-  public parseInput(input: string):string {
+  public static parseCsv(text: string): string[] {
+    return text.split('\n');
+  }
 
-    const isFileName = this.isFileName(input);
+  public parseInput(input: string): string {
 
+    const isFileName = ParseInputService.isFileName(input);
     return isFileName ? this.getFileText(input) : input;
   }
 
-  public isFileName(input: string): boolean {
-    return input.endsWith('.txt');
+  public static isFileName(input: string): boolean {
+    return input.endsWith('.txt') || input.endsWith('.csv');
   }
 
-  public getFileText(fileName: string):string {
-    return (this.parseDataService.getFileText(fileName));
+  public getFileText(fileName: string): string {
+    return this.parseDataService.getFileText(fileName);
   }
 
 }
